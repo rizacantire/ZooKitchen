@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooKitchen.Infrastructure",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooKitchen.Api", "ZooKitchen.Api\ZooKitchen.Api.csproj", "{A9C27B2A-4E24-43CF-BDA0-1E90D3C9E8CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooKitchen.WPF", "ZooKitchen.WPF\ZooKitchen.WPF.csproj", "{40E5EBFB-B902-4712-9445-EC98A1F33561}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A9C27B2A-4E24-43CF-BDA0-1E90D3C9E8CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9C27B2A-4E24-43CF-BDA0-1E90D3C9E8CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9C27B2A-4E24-43CF-BDA0-1E90D3C9E8CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40E5EBFB-B902-4712-9445-EC98A1F33561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40E5EBFB-B902-4712-9445-EC98A1F33561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40E5EBFB-B902-4712-9445-EC98A1F33561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40E5EBFB-B902-4712-9445-EC98A1F33561}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
