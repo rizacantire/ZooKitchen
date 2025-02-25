@@ -20,7 +20,7 @@ namespace ZooKitchen.Infrastructure
 
             services.AddDbContext<SiteContext>(options =>
 
-            options.UseSqlite(configuration.GetConnectionString("SqliteConnectionString")));
+            options.UseSqlite(configuration.GetConnectionString("Data Source = ..//productTracking.db")));
             services.AddTransient(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
 
             services.AddScoped<IAnimalRepository, AnimalRepository>();
@@ -29,8 +29,11 @@ namespace ZooKitchen.Infrastructure
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductService, ProductService>();
 
-            services.AddScoped<IDeliveryDetailRepository, DeliveryDetailRepository>();
-            services.AddScoped<IDeliveryDetailService, DeliveryDetailService>();
+            services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
+            services.AddScoped<IOrderDetailService, OrderDetailService>();
+
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderService, OrderService>();
 
             return services;
         }

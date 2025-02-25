@@ -5,7 +5,7 @@ using ZooKitchen.Domain.Entities;
 
 namespace ZooKitchen.Application.Contracts.Services
 {
-    public interface IDeliveryDetailService : IServiceBase<DeliveryDetail>
+    public interface IOrderDetailService : IServiceBase<OrderDetail>
     {
     }
 }

@@ -16,7 +16,8 @@ namespace ZooKitchen.Infrastructure.Persistence
         }
         public DbSet<Animal> Animals { get; set; }  // Hayvanlar tablosu
         public DbSet<Product> Products { get; set; }      // Yiyecekler tablosu
-        public DbSet<DeliveryDetail> DeliveryDetails { get; set; }  // Gönderim detayları tablosu
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }  // Gönderim detayları tablosu
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
         {

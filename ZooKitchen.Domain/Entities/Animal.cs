@@ -7,7 +7,6 @@ namespace ZooKitchen.Domain.Entities
 
     {
         public string Name { get; set; }  // Hayvanın adı
-        public ICollection<DeliveryDetail> DeliveryDetails { get; set; }  // Gönderim detaylarıyla ilişki
-
+        public ICollection<Order> Orders { get; set; }
     }
 }

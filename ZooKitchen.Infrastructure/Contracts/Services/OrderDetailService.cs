@@ -4,17 +4,16 @@ using ZooKitchen.Application.Contracts.Services;
 using ZooKitchen.Domain.Entities;
 using ZooKitchen.Infrastructure.Contracts.Services.Commons;
 
-
 namespace ZooKitchen.Infrastructure.Contracts.Services
 {
-    public class AnimalService : ServiceBase<Animal, IAnimalRepository>, IAnimalService
+    public class OrderDetailService : ServiceBase<OrderDetail, IOrderDetailRepository>, IOrderDetailService
     {
+        private readonly IMapper _mapper;
 
 
-        public AnimalService(IAnimalRepository repository) : base(repository)
+        public OrderDetailService(IOrderDetailRepository repository, IMapper mapper) : base(repository)
         {
-      
+            _mapper = mapper;
         }
-
     }
 }

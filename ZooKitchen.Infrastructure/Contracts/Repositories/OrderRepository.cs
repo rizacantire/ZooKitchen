@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace ZooKitchen.Infrastructure.Contracts.Repositories
 {
-    public class DeliveryDetailRepository : RepositoryBase<DeliveryDetail>,IDeliveryDetailRepository
+    public class OrderRepository : RepositoryBase<Order>,IOrderRepository
     {
-        public DeliveryDetailRepository(SiteContext dbContext) : base(dbContext)
+        public OrderRepository(SiteContext dbContext) : base(dbContext)
         {
         }
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ZooKitchen.Application.Contracts.Repositories
 {
-    public interface IDeliveryDetailRepository : IRepositoryBase<DeliveryDetail>
+    public interface IOrderRepository : IRepositoryBase<Order>
     { 
     }
 }

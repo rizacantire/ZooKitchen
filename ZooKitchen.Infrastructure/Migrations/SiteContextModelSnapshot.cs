@@ -32,7 +32,30 @@ namespace ZooKitchen.Infrastructure.Migrations
                     b.ToTable("Animals");
                 });
 
-            modelBuilder.Entity("ZooKitchen.Domain.Entities.DeliveryDetail", b =>
+            modelBuilder.Entity("ZooKitchen.Domain.Entities.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AnimalId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnimalId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("ZooKitchen.Domain.Entities.OrderDetail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -41,26 +64,19 @@ namespace ZooKitchen.Infrastructure.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("AnimalId")
+                    b.Property<int>("OrderId")
                         .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("DeliveryDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AnimalId");
+                    b.HasIndex("OrderId");
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("DeliveryDetails");
+                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("ZooKitchen.Domain.Entities.Product", b =>
@@ -78,33 +94,44 @@ namespace ZooKitchen.Infrastructure.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("ZooKitchen.Domain.Entities.DeliveryDetail", b =>
+            modelBuilder.Entity("ZooKitchen.Domain.Entities.Order", b =>
                 {
                     b.HasOne("ZooKitchen.Domain.Entities.Animal", "Animal")
-                        .WithMany("DeliveryDetails")
+                        .WithMany("Orders")
                         .HasForeignKey("AnimalId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Animal");
+                });
+
+            modelBuilder.Entity("ZooKitchen.Domain.Entities.OrderDetail", b =>
+                {
+                    b.HasOne("ZooKitchen.Domain.Entities.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ZooKitchen.Domain.Entities.Product", "Product")
-                        .WithMany("DeliveryDetails")
+                        .WithMany("OrderDetails")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Animal");
+                    b.Navigation("Order");
 
                     b.Navigation("Product");
                 });
 
             modelBuilder.Entity("ZooKitchen.Domain.Entities.Animal", b =>
                 {
-                    b.Navigation("DeliveryDetails");
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("ZooKitchen.Domain.Entities.Product", b =>
                 {
-                    b.Navigation("DeliveryDetails");
+                    b.Navigation("OrderDetails");
                 });
 #pragma warning restore 612, 618
         }

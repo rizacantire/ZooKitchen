@@ -6,12 +6,12 @@ using ZooKitchen.Infrastructure.Contracts.Services.Commons;
 
 namespace ZooKitchen.Infrastructure.Contracts.Services
 {
-    public class DeliveryDetailService : ServiceBase<DeliveryDetail, IDeliveryDetailRepository>, IDeliveryDetailService
+    public class OrderService : ServiceBase<Order, IOrderRepository>, IOrderService
     {
         private readonly IMapper _mapper;
 
 
-        public DeliveryDetailService(IDeliveryDetailRepository repository, IMapper mapper) : base(repository)
+        public OrderService(IOrderRepository repository, IMapper mapper) : base(repository)
         {
             _mapper = mapper;
         }

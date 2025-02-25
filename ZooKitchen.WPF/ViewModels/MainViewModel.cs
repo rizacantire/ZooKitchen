@@ -1,34 +1,43 @@
 ﻿using AutoMapper;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using ZooKitchen.Application.Contracts.Services;
 using ZooKitchen.Domain.Entities;
+using ZooKitchen.Infrastructure.Contracts.Services;
 
 namespace ZooKitchen.WPF.ViewModels
 {
-    public partial class MainViewModel : ObservableObject
+    public class MainViewModel : INotifyPropertyChanged
     {
-        private readonly IAnimalService _animalService;
+        private readonly AnimalService _animalService;
 
-        [ObservableProperty]
-        private ObservableCollection<Animal> animals = new ObservableCollection<Animal>(); // Initialize here to avoid CS8618
-        private readonly IMapper _mapper;
 
-        public MainViewModel(IAnimalService animalService, IMapper mapper)
+        public ObservableCollection<Animal> Animals { get; set; }
+
+        public MainViewModel(AnimalService animalService)
         {
             _animalService = animalService;
-            _mapper = mapper;
-            LoadAnimalsCommand.Execute(null); // Uygulama başladığında LoadAnimals çalışsın
+     
+            Animals = new ObservableCollection<Animal>();
             LoadAnimals();
         }
 
-        [RelayCommand]
-        private async Task LoadAnimals()
+        private async void LoadAnimals()
         {
-            var animalList = await _animalService.GetAllAsync();
-            Animals = new ObservableCollection<Animal>(animalList);
+            var animals = await _animalService.GetAllAsync();
+            foreach (var animal in animals)
+            {
+                Animals.Add(animal);
+            }
+            OnPropertyChanged(nameof(Animals));
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

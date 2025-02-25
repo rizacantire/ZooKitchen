@@ -7,9 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid>
-            <DataGrid ItemsSource="{Binding Animals}" AutoGenerateColumns="True"
-                  Margin="10"/>
-        </Grid>
+        <ListBox ItemsSource="{Binding Animals}" DisplayMemberPath="Name" />
     </Grid>
 </Window>
